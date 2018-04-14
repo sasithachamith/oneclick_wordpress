@@ -52,6 +52,6 @@ sudo systemctl restart php7.0-fpm.service
 
 echo "Instaling MariaDB"
 sleep 2;
-sudo apt install mariadb-server mariadb-client php7.0-mysql
+sudo apt install mariadb-server mariadb-client php7.0-mysql -y
 sudo systemctl restart php7.0-fpm.service
 sudo mysql_secure_installation
