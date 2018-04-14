@@ -33,6 +33,7 @@ sudo su -c 'echo "<?php phpinfo(); ?>" |tee info.php'
 echo "Nginx server installation completed"
 sleep 2;
 cd ~
+sudo chown www-data:www-data -R /var/www/"$DOMAIN"
 sudo systemctl restart nginx.service
 
 echo "lets install php 7.0 and modules"
