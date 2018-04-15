@@ -10,6 +10,7 @@ sudo apt-get update
 echo "Installing Nginx"
 sleep 2;
 sudo apt-get install nginx -y
+sudo apt-get install zip -y
 
 echo "Sit back and relax :) ......"
 sleep 2;
@@ -29,7 +30,7 @@ sudo mv nginx.conf nginx.conf.backup
 wget -O nginx.conf https://goo.gl/n8crcR
 sudo mkdir /var/www/"$DOMAIN"
 cd /var/www/"$DOMAIN"
-sudo su -c 'echo "<?php phpinfo(); ?>" |tee info.php'
+sudo su -c 'echo "<?php phpinfo(); ?>" |tee index.php'
 
 echo "Nginx server installation completed"
 sleep 2;
