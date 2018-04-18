@@ -11,6 +11,7 @@ cd /etc/nginx/sites-available/
 wget -O "$DOMAIN" https://goo.gl/s8pdtv
 sed -i -e "s/example.com/$DOMAIN/" "$DOMAIN"
 sed -i -e "s/www.example.com/www.$DOMAIN/" "$DOMAIN"
+sudo ln -s /etc/nginx/sites-available/"$DOMAIN" /etc/nginx/sites-enabled/
 echo "Setting up Wordpress With Cloudflare FULL SSL"
 sleep 2;
 sudo mkdir /var/www/"$DOMAIN"
