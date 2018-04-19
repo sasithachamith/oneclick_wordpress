@@ -11,6 +11,7 @@ echo "Installing Nginx"
 sleep 2;
 sudo apt-get install nginx -y
 sudo apt-get install zip -y
+sudo apt install unzip -y
 
 echo "Sit back and relax :) ......"
 sleep 2;
