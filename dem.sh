@@ -2,9 +2,12 @@
 # GET ALL USER INPUT
 echo "Domain Name (eg. example.com)?"
 read DOMAIN
+echo "Username (eg. opencart)?"
+read USERNAME
 
 echo "Updating OS................."
 sudo apt-get update
+sudo apt install pwgen -y
 
 echo "Sit back and relax :) ......"
 cd /etc/nginx/sites-available/
@@ -28,3 +31,17 @@ sleep 2;
 cd ~
 sudo chown www-data:www-data -R /var/www/"$DOMAIN"
 sudo systemctl restart nginx.service
+
+PASS=`pwgen -s 14 1`
+
+mysql -uroot <<MYSQL_SCRIPT
+CREATE DATABASE $USERNAME;
+CREATE USER '$USERNAME'@'localhost' IDENTIFIED BY '$PASS';
+GRANT ALL PRIVILEGES ON $USERNAME.* TO '$USERNAME'@'localhost';
+FLUSH PRIVILEGES;
+MYSQL_SCRIPT
+
+echo "Here is the database"
+echo "Database:   $USERNAME"
+echo "Username:   $USERNAME"
+echo "Password:   $PASS"
